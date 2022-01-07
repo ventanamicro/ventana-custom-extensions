@@ -1,0 +1,8 @@
+.DS_Store
+*.html
+*.txt
+*~
+\#*\#
+.images
+.asciidoctor
+ventana-custom-extensions-*.pdf

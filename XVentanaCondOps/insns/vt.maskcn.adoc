@@ -1,0 +1,48 @@
+<<<
+[#insns-maskcn,reftext="Mask register value on negated condition"]
+=== vt.maskcn
+
+Synopsis::
+Masks a value (_rs1_) on the negated condition of a truth value (_rs2_)
+
+Mnemonic::
+vt.maskc _rd_, _rs1_, _rs2_
+
+Encoding::
+[wavedrom, , svg]
+....
+{reg:[
+    { bits:  7, name: 0x7b, attr: ['CUSTOM-3'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x7, attr: ['MASKCN']},
+    { bits:  5, name: 'rs1', attr: ['value'] },
+    { bits:  5, name: 'rs2', attr: ['condition'] },
+    { bits:  7, name: 0x0, attr: ['MASKCN'] },
+]}
+....
+
+Description:: 
+If the value of register _rs2_ is zero, place the value of register _rs1_ into the register _rd_. +
+Otherwise, put the value 0 (zero) into _rd_.
+
+Operation::
+[source,sail]
+--
+let value = X(rs1);
+let condition = X(rs2);
+
+X(rd) = if (condition == 0) then value
+      	                    else 0;
+--
+
+Implemented in::
+[%header,cols="4,2,2"]
+|===
+|Extension
+|Minimum version
+|Supported cores
+
+|<<#xventanacondops>>
+|1.0
+|<<#vt1>>
+|===
