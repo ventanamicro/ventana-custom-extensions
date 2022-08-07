@@ -1,7 +1,7 @@
 [[ventana-custom-extensions]]
 = VTx-family custom instructions: Custom ISA extensions for Ventana Micro Systems RISC-V cores
-:revdate: 2022-01-07
-:revnumber: 1.0.0
+:revdate: 2022-08-07
+:revnumber: 1.0.1
 :revremark: Public release
 :doctype: book
 // :media: prepress
@@ -62,6 +62,10 @@ Production by VRULL GmbH.
 |1.0.0
 |January 2022 +
 Initial revision.
+
+|1.0.1
+|August 2022 +
+Updated guidance for `conditional bitwise-and` sequences to expand to an `and` instruction followed by a `conditional bitwise-or` sequence, no longer depending on the Zbb extension (for the `andn` instruction).
 |===
 
 == Vendor-prefix for mnemonics

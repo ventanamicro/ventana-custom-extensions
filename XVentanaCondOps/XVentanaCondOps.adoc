@@ -107,17 +107,17 @@ xor        rd, rs1, rd
 
 |*Conditional bitwise-and, if zero* +
 `rd = (rc == 0) ? (rs1 & rs2) : rs1`
-|not        rd, rs2
-vt.maskcn  rd, rd, rc
-andn       rd, rs1, rd
+|and        rd, rs1, rs2
+vt.maskc   rtmp, rs1, rc
+or         rd, rd, rtmp
 .4+.^|3 insns +
 (requires 1 temporary)
 
 |*Conditional bitwise-and, if non-zero* +
 `rd = (rc != 0) ? (rs1 & rs2) : rs1`
-|not        rd, rs2
-vt.maskc   rd, rd, rc
-andn       rd, rs1, rd
+|and        rd, rs1, rs2
+vt.maskcn  rtmp, rs1, rc
+or         rd, rd, rtmp
 
 |*Conditional select, if zero* +
 `rd = (rc == 0) ? rs1 : rs2`
